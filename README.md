@@ -19,17 +19,8 @@ chmod +x disclo-sheet.sh
 - Screenshots of each file.
 - An index.html file for easy visualization.
 
-### Simply open the index.html file in yoRun the script with a list of URLs:
-```
-./disclo-sheet.sh urls_list.txt
-```
-    
-### The script will create a folder containing:
-- The downloaded XLS/XLSX files.
-- Screenshots of each file.
-- An index.html file for easy visualization.
 
-Simply open the index.html file in your browser to review the screenshots and quickly identify potential sensitive information.
+### Simply open the index.html file in your browser to review the screenshots and quickly identify potential sensitive information.
 
 ### 🛠 Requirements
 1. **wget** for downloading files.
