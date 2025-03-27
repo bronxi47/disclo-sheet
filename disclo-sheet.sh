@@ -184,9 +184,9 @@ echo "<html><head><title>disclo-sheet for fun & profit</title><style>
         font-size: smaller;
         color: #666;
     }
-    .flew-row {
+    .flex-row {
         display: flex;
-        flew-wrap: wrap;
+        flex-wrap: wrap;
         gap: 1rem;
         justify-content: space-between;
         padding-bottom: 1rem; 
@@ -202,7 +202,7 @@ for screenshot in "$screenshots_dir"/*.png; do
     original_url="${url_map["$original_file"]}"
     echo "<div class='card'>" >> "$index_file"
     echo "<div class="image-container"><img src='$screenshot' width='100%'></div>" >> "$index_file"
-    echo "<div class='card-footer'><div class='flew-row'><h3>$base_name</h3>" >> "$index_file"
+    echo "<div class='card-footer'><div class='flex-row'><h3>$base_name</h3>" >> "$index_file"
     echo "<a href='$original_file' target='_blank'><button>Open File</button></a></div>" >> "$index_file"
     echo "<p>Original URL: <a href='$original_url' target='_blank'>$original_url</a></p>" >> "$index_file"
     echo "</div></div>" >> "$index_file"
