@@ -92,12 +92,105 @@ done < "$input_file"
 # Generate index.html
 index_file="index.html"
 echo "<html><head><title>disclo-sheet for fun & profit</title><style>
-body { font-family: Arial, sans-serif; margin: 20px; }
-img { border: 1px solid #ccc; margin: 10px; }
-.container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.card { border: 1px solid #ddd; padding: 10px; background: #f9f9f9; }
-.header { display: flex; justify-content: space-between; align-items: center; }
-.footer { margin-top: 20px; text-align: center; font-size: smaller; color: #666; }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #2a3748;
+    }
+    img {
+        background-color: #e5e7eb;
+    }
+   .image-container {
+        width: 100%;
+        height: 214px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
+    }
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #e5e7eb;
+        color: #0f0f0f;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bolder;
+        white-space: nowrap;
+    }
+    button:hover {
+        background-color: #d0d0d0;
+    }
+    a {
+        color: #006ac5;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        word-break: break-all;
+    }
+    a:visited {
+        color: #8ab4f8;
+    }
+    a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+    a:active {
+        color: #ffcc00;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    .card {
+        background-color: #2f3949;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .card-footer {
+        padding: 1rem;
+        color: #697482;
+    }
+    .card-footer h3 {
+        word-break: break-all;
+    }
+    .card-footer h3,
+    .card-footer p {
+        margin: 0;
+    }
+    .header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5px;
+        color: #e5e7eb;
+        padding-bottom: 1rem;
+    }
+    .header > h1,
+    .header > p {
+        margin: 0;
+    }
+    .footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: smaller;
+        color: #666;
+    }
+    .flew-row {
+        display: flex;
+        flew-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-between;
+        padding-bottom: 1rem; 
+    }
 </style></head><body>" > "$index_file"
 echo "<div class='header'><h1>disclo-sheet for fun & profit</h1><p style='font-size: smaller;'>by bronxi</p><p>Filtered files: $total_filtered | Downloaded: $total_downloaded</p></div>" >> "$index_file"
 echo "<div class='container'>" >> "$index_file"
@@ -108,11 +201,11 @@ for screenshot in "$screenshots_dir"/*.png; do
     original_file="$original_dir/$(ls $original_dir | grep -E '\.(xls|xlsx|csv|ods)$')"
     original_url="${url_map["$original_file"]}"
     echo "<div class='card'>" >> "$index_file"
-    echo "<h3>$base_name</h3>" >> "$index_file"
-    echo "<a href='$original_file' target='_blank'>Open local file</a><br>" >> "$index_file"
+    echo "<div class="image-container"><img src='$screenshot' width='100%'></div>" >> "$index_file"
+    echo "<div class='card-footer'><div class='flew-row'><h3>$base_name</h3>" >> "$index_file"
+    echo "<a href='$original_file' target='_blank'><button>Open File</button></a></div>" >> "$index_file"
     echo "<p>Original URL: <a href='$original_url' target='_blank'>$original_url</a></p>" >> "$index_file"
-    echo "<img src='$screenshot' width='100%'><br>" >> "$index_file"
-    echo "</div>" >> "$index_file"
+    echo "</div></div>" >> "$index_file"
 done
 
 echo "</div><div class='footer'>design with passion</div></body></html>" >> "$index_file"
